@@ -47,7 +47,7 @@ cd Signature_Verification_System-main
 ### 2. Backend Setup
 ```bash
 # Install Python dependencies
-pip install flask flask-cors opencv-python numpy scikit-image matplotlib
+pip install -r requirements.txt
 
 # Start Flask server
 python app.py
