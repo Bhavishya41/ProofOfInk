@@ -1,9 +1,18 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useRef, useState, useEffect } from 'react'
 
-export default function SignatureUpload({ label, onFile }) {
+export default function SignatureUpload({ label, onFile, file = null }) {
   const inputRef = useRef(null)
   const [preview, setPreview] = useState(null)
   const [dragOver, setDragOver] = useState(false)
+
+  // Update preview when file prop changes (e.g., when loading samples)
+  useEffect(() => {
+    if (file) {
+      setPreview(URL.createObjectURL(file))
+    } else {
+      setPreview(null)
+    }
+  }, [file])
 
   const onChange = (e) => {
     const file = e.target.files?.[0]
